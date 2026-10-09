@@ -3,197 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Mi Persona Favorita ❤️</title>
+    <title>Menú Principal</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- FontAwesome para Iconografía Corporativa -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* --- ESTILOS BASE --- */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            overflow: hidden; 
-            background-color: #fff5f7; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            min-height: 100vh;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            transition: background-image 1.5s ease-in-out;
-        }
-
-        body.celebracion {
-            background-image: url('Snapchat-1771218290.jpg');
-        }
-
-        /* --- CONTENEDOR DE PREGUNTA --- */
-        .container {
-            background: rgba(255, 255, 255, 0.92);
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(255, 77, 109, 0.3);
-            text-align: center;
-            z-index: 10;
-            width: 320px;
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .container.oculto {
-            opacity: 0;
-            transform: translateY(-100px) scale(0.8);
-            pointer-events: none;
-        }
-
-        /* --- MENSAJE FINAL (OCULTO AL INICIO) --- */
-        #mensaje-final {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            width: 80%;
-            color: white;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
-            opacity: 0;
-            z-index: 20;
-            transition: opacity 2s ease-in-out;
-            pointer-events: none;
-        }
-
-        #mensaje-final.visible {
-            opacity: 1;
-        }
-
-        h1 { color: #ff4d6d; margin-bottom: 1.5rem; font-size: 1.6rem; }
-        h2 { font-size: 2.5rem; margin-bottom: 10px; }
-        p.dedicatoria { font-size: 1.4rem; font-style: italic; }
-
-        label { display: block; margin-top: 1rem; color: #555; font-weight: bold; text-align: left; }
-        
-        input {
-            width: 100%;
-            padding: 12px;
-            margin-top: 5px;
-            border-radius: 10px;
-            border: 2px solid #ddd;
-            box-sizing: border-box;
-            font-size: 1rem;
-        }
-
-        input[readonly] {
-            background-color: #fff0f3;
-            color: #ff4d6d;
-            border-color: #ff4d6d;
-        }
-
-        button {
-            background-color: #ff4d6d;
-            color: white;
-            border: none;
-            padding: 15px;
-            width: 100%;
-            border-radius: 10px;
-            font-weight: bold;
-            margin-top: 20px;
-            cursor: pointer;
-            font-size: 1.1rem;
-            transition: transform 0.2s, background 0.3s;
-        }
-
-        button:hover { background-color: #ff758f; transform: scale(1.02); }
-
-        #error-msj { margin-top: 15px; color: #ff4d6d; font-weight: bold; min-height: 20px; }
-
-        /* --- LLUVIA DE FLORES --- */
-        .flower {
-            position: fixed;
-            top: -50px;
-            font-size: 2rem;
-            user-select: none;
-            pointer-events: none;
-            z-index: 15;
-            animation: fall linear forwards;
-        }
-
-        @keyframes fall {
-            to { transform: translateY(110vh) rotate(720deg); }
-        }
+        body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
 
-    <div id="mensaje-final">
-        <h2>¡Eres lo mejor que me ha pasado! ❤️</h2>
-        <p class="dedicatoria">Gracias por cada momento a mi lado...</p>
-    </div>
+    <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
+    <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-emerald-800 p-2.5 rounded-xl text-white shadow-lg shadow-emerald-800/30">
+                    <i class="fa-solid fa-industry text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg tracking-wide text-emerald-950">Lab Renser Oriente</h1>
+                    <p class="text-xs text-slate-500">Sistema de Gestion Renser Oriente</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2">
+                <span id="connection-status" class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                    <i class="fa-solid fa-circle text-[8px] mr-1.5 text-emerald-500"></i> Sistema Listo
+                </span>
+            </div>
+        </div>
+    </header>
 
-    <div class="container" id="box">
-        <h1>Nuestra Historia 💖</h1>
+    <!-- CONTENEDOR PRINCIPAL -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col justify-center items-center">
         
-        <label>Desde el:</label>
-        <input type="text" value="2 de Diciembre, 2019" readonly>
-        
-        <label>¿Cuántos meses han pasado?</label>
-        <input type="number" id="inputMeses" placeholder="Escribe el número...">
-        
-        <button onclick="comprobar()">Comprobar ❤️</button>
-        <div id="error-msj"></div>
-    </div>
+        <!-- ENCABEZADO DEL MENÚ -->
+        <div class="text-center max-w-2xl mb-10">
+            <h2 class="text-3xl font-extrabold text-emerald-950 tracking-tight mb-2">Sistema Laboratorio Renser Oriente</h2>
+            <p class="text-sm text-slate-500">Seleccione el módulo al que desea acceder para generar recepciones, informes, calibraciones, etc.</p>
+        </div>
 
-    <div id="lluvia"></div>
+        <!-- REJILLA DE MÓDULOS DEL SISTEMA -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-6xl">
 
-    <script>
-        function comprobar() {
-            const input = document.getElementById('inputMeses').value;
-            const msj = document.getElementById('error-msj');
-            const box = document.getElementById('box');
-            const mensajeFinal = document.getElementById('mensaje-final');
-            
-            // Cálculo automático de meses
-            const inicio = new Date(2019, 11, 02); 
-            const hoy = new Date();
-            let mesesReal = (hoy.getFullYear() - inicio.getFullYear()) * 12;
-            mesesReal += hoy.getMonth() - inicio.getMonth();
-            if (hoy.getDate() < inicio.getDate()) mesesReal--;
+            <!-- TARJETA 1: Recepciones (main.html) -->
+            <a href="Recepciones.html" class="group bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:border-emerald-500/50 transition-all duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-800 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-emerald-800 group-hover:text-white transition-all duration-300 shadow-md">
+                        <i class="fa-solid fa-tasks text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-emerald-950 group-hover:text-emerald-700 transition-colors mb-2">Recepciones</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed mb-6">Módulo principal para crear, parametrizar prioridades y asignar tareas operacionales al personal.</p>
+                </div>
+                <div class="flex items-center text-xs font-semibold text-emerald-700 group-hover:text-emerald-600">
+                    <span>Acceder al panel</span>
+                    <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
 
-            if (parseInt(input) === mesesReal) {
-                // EFECTO DE ÉXITO
-                box.classList.add('oculto'); 
-                document.body.classList.add('celebracion'); 
-                
-                // Mostrar el mensaje romántico después de un pequeño delay
-                setTimeout(() => {
-                    mensajeFinal.classList.add('visible');
-                }, 1000);
+            <!-- TARJETA 2: Informes Tecnicos (Main informes Tecnicos.html) -->
+            <a href="Main informes Tecnicos.html" class="group bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:border-emerald-500/50 transition-all duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-800 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-emerald-800 group-hover:text-white transition-all duration-300 shadow-md">
+                        <i class="fa-solid fa-users-gear text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-emerald-950 group-hover:text-emerald-700 transition-colors mb-2">Informes Tecnicos</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed mb-6">Administración de la base de datos de operadores, cédulas, cargos y números telefónicos.</p>
+                </div>
+                <div class="flex items-center text-xs font-semibold text-emerald-700 group-hover:text-emerald-600">
+                    <span>Gestionar operadores</span>
+                    <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
 
-                lanzarFlores(); 
-            } else {
-                msj.innerText = "¡Ese no es! Piensa un poquito más... 💕";
-                // Limpiar mensaje de error después de 3 segundos
-                setTimeout(() => { msj.innerText = ""; }, 3000);
-            }
-        }
+            <!-- TARJETA 3: Seguimientos (slave.html) -->
+            <a href="slave.html" class="group bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:border-emerald-500/50 transition-all duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-800 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-emerald-800 group-hover:text-white transition-all duration-300 shadow-md">
+                        <i class="fa-solid fa-list-check text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-emerald-950 group-hover:text-emerald-700 transition-colors mb-2">Seguimientos </h3>
+                    <p class="text-xs text-slate-500 leading-relaxed mb-6">Interfaz individual para consulta de actividades asignadas por C.I. y marcado de etapas de avance.</p>
+                </div>
+                <div class="flex items-center text-xs font-semibold text-emerald-700 group-hover:text-emerald-600">
+                    <span>Consultar mis tareas</span>
+                    <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
 
-        function lanzarFlores() {
-            const contenedor = document.getElementById('lluvia');
-            const flores = ['🌷', '🌼', '🌹', '🌼', '✨', '❤️'];
-            
-            for (let i = 0; i < 100; i++) {
-                setTimeout(() => {
-                    const f = document.createElement('div');
-                    f.className = 'flower';
-                    f.innerText = flores[Math.floor(Math.random() * flores.length)];
-                    f.style.left = Math.random() * 100 + 'vw';
-                    const duracion = Math.random() * 3 + 3;
-                    f.style.animationDuration = duracion + 's';
-                    f.style.opacity = Math.random() *30;
-                    contenedor.appendChild(f);
-                    
-                    setTimeout(() => f.remove(), duracion * 1000);
-                }, i * 150);
-            }
-        }
-    </script>
+            <!-- TARJETA 4: Recepcion de Productos y Servicios (view.html) -->
+            <a href="view.html" class="group bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:border-emerald-500/50 transition-all duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-800 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-emerald-800 group-hover:text-white transition-all duration-300 shadow-md">
+                        <i class="fa-solid fa-desktop text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-emerald-950 group-hover:text-emerald-700 transition-colors mb-2">Recepcion de Productos y Servicios</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed mb-6">Pantalla de monitoreo en vivo para seguimiento general del estatus de operaciones y etapas.</p>
+                </div>
+                <div class="flex items-center text-xs font-semibold text-emerald-700 group-hover:text-emerald-600">
+                    <span>Abrir modo visor</span>
+                    <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
+	    <!-- TARJETA 5: Salidas de Laboratorio(RO-SGL-7_4-FT-09_Registro_de_Salida.htm) -->
+            <a href="RO-SGL-7_4-FT-09_Registro_de_Salida.html" class="group bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:border-emerald-500/50 transition-all duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-800 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-emerald-800 group-hover:text-white transition-all duration-300 shadow-md">
+                        <i class="fa-solid fa-desktop text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-emerald-950 group-hover:text-emerald-700 transition-colors mb-2">Salidas de Laboratorio</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed mb-6">Pantalla de monitoreo en vivo para seguimiento general del estatus de operaciones y etapas.</p>
+                </div>
+                <div class="flex items-center text-xs font-semibold text-emerald-700 group-hover:text-emerald-600">
+                    <span>Abrir modo visor</span>
+                    <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>	
+        </div>
+
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="bg-white border-t border-slate-200 py-4 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-400">
+            OPC-SYSTEM &copy; Departamento de Operaciones. Todos los derechos reservados.
+        </div>
+    </footer>
+
 </body>
 </html>
